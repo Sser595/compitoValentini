@@ -1,6 +1,6 @@
 <?php
     include 'Alunno.php';
-    class Classe{
+    class Classe implements JsonSerializable{
         
         private $alunni = []; 
         function __construct(){
@@ -21,6 +21,9 @@
                 }
             }
             return null;
+        }
+        public function jsonSerialize() {
+            return get_object_vars($this);
         }
     }
     

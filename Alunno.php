@@ -1,5 +1,5 @@
 <?php
-    class Alunno{
+    class Alunno implements JsonSerializable{
         public String $nome;
         public String $cognome;
         public int $eta;
@@ -14,6 +14,10 @@
         }
         function getName(){
             return $this->nome;
+        }
+
+        public function jsonSerialize() {
+            return get_object_vars($this);
         }
     }
 

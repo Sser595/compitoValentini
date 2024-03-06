@@ -5,10 +5,12 @@ use Slim\Factory\AppFactory;
 
 require 'Classe.php';
 require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/controller/AlunniController.php';
+require __DIR__ . '/controller/indexController.php';
 
 $app = AppFactory::create();
 
-$app->get('/', function (Request $request, Response $response, $args) {
+/*$app->get('/', function (Request $request, Response $response, $args) {
     $response->getBody()->write("Hello world!");
     return $response;
 });
@@ -33,6 +35,9 @@ $app->get('/alunni/{nome}', function ($request, $response, array $args) {
         );
     }
     return $response;
-});
+});*/
+
+$app->get("/api/alunni", "AlunniController:list");
+$app->get("/api/alunni/{name}", "AlunniController:showbyname");
 
 $app->run();
