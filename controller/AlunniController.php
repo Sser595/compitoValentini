@@ -7,11 +7,11 @@ class AlunniController {
     function createAlunno(Request $request, Response $response, $args){
         $body = $request -> getBody()->getContents();
         $parsedBody = json_decode($body, true);
-        $nome =$parsedBody('nome');
-        $cognome =$parsedBody('cognome');
-        $eta =$parsedBody('eta');
+        $nome =$parsedBody['nome'];
+        $cognome =$parsedBody['cognome'];
+        $eta =$parsedBody['eta'];
         $alunno = new Alunno($nome, $cognome, $eta);
-        $response ->getBody()-> write($alunno->toString());
+        $response ->getBody()-> write(json_encode($alunno));
         return $response->withHeader('Content-type', 'application/json')->withStatus(201);
     }
 

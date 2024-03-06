@@ -1,13 +1,13 @@
 <?php
     class Alunno implements JsonSerializable{
-        public String $nome;
-        public String $cognome;
-        public int $eta;
+        public  $nome;
+        public  $cognome;
+        public  $eta;
     
         function __construct($nome, $cognome, $eta){
-            $this-> nome = $nome;
-            $this-> cognome = $cognome;
-            $this-> eta = $eta; 
+            $this->nome = $nome;
+            $this->cognome = $cognome;
+            $this->eta = $eta; 
         }
         function toString(){
             return "Nome: ".$this->nome.", Cognome: ".$this->cognome.", Età: ".$this->eta;
@@ -17,7 +17,12 @@
         }
 
         public function jsonSerialize() {
-            return get_object_vars($this);
+            $a =  [
+                'nome'=>$this->nome,
+                'cognome'=>$this->cognome,
+                'eta'=>$this->eta
+            ];
+            return $a;
         }
     }
 

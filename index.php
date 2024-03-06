@@ -39,5 +39,6 @@ $app->get('/alunni/{nome}', function ($request, $response, array $args) {
 
 $app->get("/api/alunni", "AlunniController:list");
 $app->get("/api/alunni/{name}", "AlunniController:showbyname");
+$app ->post("/api/alunni", "AlunniController:createAlunno");
 
 $app->run();
